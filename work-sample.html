@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Sample | Kennui</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header">
+    <div class="navbar">
+        <div class="icon">
+            <h2 class="logo">K1DO</h2>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="work-sample.html">Work Sample</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<section class="hero" style="min-height:70vh;">
+    <div class="hero-content">
+        <h1>FEATURED PROJECTS</h1>
+        <p class="hero-intro">A collection of projects and professional experiences that showcase<br>
+            my skills in web development, customer support, technical support, virtual assistance, and team leadership.</p>
+    </div>
+</section>
+
+<section class="work-section">
+    <div class="featured-header">
+        <h1 class="work-title">Featured Projects</h1>
+        <p class="work-subtitle">Here are a few projects that demonstrate the kind of work I deliver for clients, from websites to leadership-driven support experiences.</p>
+    </div>
+
+    <ul class="project-grid">
+        <li class="project-card slide-left">
+            <h2>Video Project</h2>
+            <div class="project-screenshot">
+                <video controls>
+                    <source src="Final Referral Vid.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p>Edited short-form promotional content for businesses and social media platforms. Focused on engaging transitions, clean cuts, text animations, and audience retention.</p>
+        </li>
+
+        <li class="project-card slide-right">
+            <h2>Business Landing Page</h2>
+            <div class="project-screenshot">
+                <img src="landing page.png" alt="Business Landing Page">
+            </div>
+            <p>A business landing page designed to drive conversions with a strong call-to-action and clear service messaging.</p>
+        </li>
+    </ul>
+
+    <section class="logo-slider-section">
+        <div class="logo-slider-header">
+            <h2>Logo Collection</h2>
+            <p>Scroll through a selection of logos I created for brands, products, and creative businesses.</p>
+        </div>
+        <div class="logo-slider">
+            <button class="logo-control logo-prev" aria-label="Previous logo">‹</button>
+            <div class="logo-track-wrap">
+                <ul class="logo-track">
+                    <li class="logo-slide">
+                        <div class="logo-box">
+                            <img src="logo.png" alt="Logo 1">
+                        </div>
+                    </li>
+                    <li class="logo-slide">
+                        <div class="logo-box">
+                            <img src="Rodzleads.png" alt="Logo 2">
+                        </div>
+                    </li>
+                    <li class="logo-slide">
+                        <div class="logo-box">
+                            <img src="4.png" alt="Logo 3">
+                        </div>
+                    </li>
+                    <li class="logo-slide">
+                        <div class="logo-box">
+                            <img src="logo_kennui.png" alt="Kennui logo">
+                        </div>
+                    </li>
+                    <li class="logo-slide">
+                        <div class="logo-box">
+                            <img src="3.png" alt="Logo 4">
+                        </div>
+                    </li>
+                    <li class="logo-slide">
+                        <div class="logo-box">
+                            <img src="2.png" alt="Logo 5">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <button class="logo-control logo-next" aria-label="Next logo">›</button>
+        </div>
+    </section>
+
+    <div class="icon-grid">
+        <article class="icon-card slide-left">
+            <div class="icon-shape">★</div>
+            <div>
+                <h2>Team Leadership</h2>
+                <p>Leading teams with clear communication, operational consistency, and support workflows that keep clients satisfied.</p>
+            </div>
+        </article>
+
+        <article class="icon-card slide-right">
+            <div class="icon-shape">⚡</div>
+            <div>
+                <h2>Customer Support</h2>
+                <p>Delivering reliable customer support across chat, email, and order management channels with a friendly approach.</p>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-card">
+        <h2>Let's Work Together</h2>
+        <a class="cta-button" href="mailto:Edgepiligrino14@gmail.com">Contact Me</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-contact">
+        <h3>Contact</h3>
+        <p>WhatsApp: +63 963 171 7368</p>
+        <p>Email: Edgepiligrino14@gmail.com</p>
+        <p>Location: Dumaguete City, Philippines</p>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 K1do. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.work-card, .project-card, .hero, .icon-card');
+    function showOnScroll() {
+        const triggerBottom = window.innerHeight * 0.85;
+        items.forEach(item => {
+            const itemTop = item.getBoundingClientRect().top;
+            if (itemTop < triggerBottom) {
+                item.classList.add('show');
+            }
+        });
+    }
+    window.addEventListener('scroll', showOnScroll);
+    showOnScroll();
+
+    const logoTrack = document.querySelector('.logo-track');
+    const logoSlides = document.querySelectorAll('.logo-slide');
+    const prevButton = document.querySelector('.logo-prev');
+    const nextButton = document.querySelector('.logo-next');
+    let currentIndex = 0;
+    const slideWidth = logoSlides[0] ? logoSlides[0].offsetWidth + 18 : 278;
+    const totalSlides = logoSlides.length;
+    let autoSlideInterval = null;
+
+    function updateLogoPosition() {
+        if (!logoTrack) return;
+        logoTrack.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    }
+
+    function goNextLogo() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateLogoPosition();
+    }
+
+    function goPrevLogo() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateLogoPosition();
+    }
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(goNextLogo, 3500);
+    }
+
+    function stopAutoSlide() {
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = null;
+        }
+    }
+
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            goNextLogo();
+            stopAutoSlide();
+            startAutoSlide();
+        });
+    }
+
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            goPrevLogo();
+            stopAutoSlide();
+            startAutoSlide();
+        });
+    }
+
+    const logoSliderWrap = document.querySelector('.logo-track-wrap');
+    if (logoSliderWrap) {
+        logoSliderWrap.addEventListener('mouseenter', stopAutoSlide);
+        logoSliderWrap.addEventListener('mouseleave', startAutoSlide);
+    }
+
+    if (totalSlides > 0) {
+        updateLogoPosition();
+        startAutoSlide();
+    }
+});
+
+const header = document.querySelector('.header');
+window.addEventListener('scroll', () => {
+    if (header) {
+        header.style.backgroundColor = window.scrollY > 20 ? "rgba(0,0,0,0.95)" : "rgba(0,0,0,0.85)";
+    }
+});
+</script>
+
+</body>
+</html>
